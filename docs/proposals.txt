@@ -1,1 +1,23 @@
-temp
+CS 411 Team Assignment 1 - Proposal 																				     9/19/19
+
+Names:
+
+Anthony
+Kathryn 
+Neilkaran Rawal 
+Neil Raya 
+
+3 Main Requirements:
+
+1) It must utilize a database 
+2) It must correlate at least to publicly available data sets via API
+3) t must use 3 party third-party authentication  
+
+Primary Idea:
+
+By using data such as, weather, price, and transportation; this web application will generate a list of places to go based on your location. Additionally, this application will use a third-party login, where each person's profile will have a record of past visited places.  
+
+
+Secondary Idea:
+
+By using data such as, weather and mood; this web application will generate a playlist for you. 
