@@ -20,4 +20,4 @@ By using data such as, weather, price, and transportation; this web application 
 
 Secondary Idea:
 
-By using data such as, weather and mood; this web application will generate a playlist for you. 
+By using data such as, weather and location; this web application will generate a playlist for you. 
