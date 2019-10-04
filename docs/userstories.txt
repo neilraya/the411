@@ -30,3 +30,8 @@ As a logged in user traveling to New York with a group of friends, I can access 
 favorite places and activities from my previous trip. Instead of searching for new 
 places, I clicked on my favorites list. I filtered out the New York events from the 
 database to show my friends event details such as pricing and reviews. 
+
+Story 4:
+As a first time user, I want to be able to create an account. I want to be able to sign in to that account with a third-party
+login, so that I can start using the app to plan my travel activities in each city that I visit. If I enter the wrong
+password, I want to be prompted with a message telling me that the password I have entered is invalid. 
