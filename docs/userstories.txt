@@ -1,1 +1,8 @@
+Story 1:
 As a logged in user, I can search for a location. I should then see the weather at that location and a list of activities that are filtered dependent on the weather at the location. Next to the activities there should be a button to save an activity for later or make a reservation.
+
+Story 2:
+As a logged in user traveling to New York with a group of friends, I can access my 
+favorite places and activities from my previous trip. Instead of searching for new 
+places, I clicked on my favorites list. I filtered out the New York events from the 
+database to show my friends event details such as pricing and reviews. 
