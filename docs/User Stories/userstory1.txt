@@ -1,0 +1,3 @@
+As a first time user, I want to be able to create an account. I want to be able to sign in to that account with a third-party
+login, so that I can start using the app to plan my travel activities in each city that I visit. If I enter the wrong
+password, I want to be prompted with a message telling me that the password I have entered is invalid.
