@@ -21,9 +21,9 @@ login and create accounts to have a profile and history of past destinations. In
 account to interact with the main interface of the website. The user will be able to scroll through destinations feed.
 
 Story 2:
-As a logged in user, I can search for a location. I should then see the weather at that location 
-and a list of activities that are filtered dependent on the weather at the location. Next to the activities 
-there should be a button to save an activity for later or make a reservation.
+As a logged in user, I search for a location. I see the weather at that location 
+and a list of activities that are sorted dependent on the weather at the location. Next to the activities 
+there is a button to save an activity for later or make a reservation.
 
 Story 3:
 As a logged in user traveling to New York with a group of friends, I can access my 
