@@ -1,0 +1,4 @@
+As a logged in user traveling to New York with a group of friends, I can access my 
+favorite places and activities from my previous trip. Instead of searching for new 
+places, I clicked on my favorites list. I filtered out the New York events from the 
+database to show my friends event details such as pricing and reviews.

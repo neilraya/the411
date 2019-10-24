@@ -1,0 +1,5 @@
+The purpose of this web application is to assist users/people with finding destinations in their given location. 
+The list of destinations will be ranked based on price, transportation, and weather. When the user opens up the web application,
+a list of destinations will appear. This web application will be using an optional login feature. Users will be able to
+login and create accounts to have a profile and history of past destinations. Initially, users will not have to create an
+account to interact with the main interface of the website. The user will be able to scroll through destinations feed.

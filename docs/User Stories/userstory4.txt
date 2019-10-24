@@ -1,0 +1,3 @@
+As a logged in user, I search for a location. I see the weather at that location 
+and a list of activities that are sorted dependent on the weather at the location. Next to the activities 
+there is a button to save an activity to my favorites list or to book a reservation.
