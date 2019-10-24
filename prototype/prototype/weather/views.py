@@ -1,11 +1,13 @@
 from django.shortcuts import render
+from django.http import HttpResponse
+from django.template import loader
+import requests
 
 def weather(request):
-    import requests
 
     url = "http://samples.openweathermap.org/data/2.5/weather"
 
-    querystring = {"q":request,"appid":"b6907d289e10d714a6e88b30761fae22"}
+    querystring = {"q":"London,uk","appid":"b6907d289e10d714a6e88b30761fae22"}
 
     headers = {
         'User-Agent': "PostmanRuntime/7.18.0",
@@ -18,14 +20,16 @@ def weather(request):
         'cache-control': "no-cache"
         }
 
-    response = requests.request("GET", url, headers=headers, params=querystring)
+    response = requests.request("GET", url, headers=headers, params=querystring).json()
+
+    template = loader.get_template('weather/index.html')
+
 
     weather = {
-        'city' : city,
-        'temperature' : city_weather['main']['temp'],
-        'description' : city_weather['weather'][0]['description'],
-        'icon' : city_weather['weather'][0]['icon']
+        'city' : response['name'],
+        'temperature' : response['main']['temp'],
+        'description' : response['weather'][0]['description'],
+        'icon' : response['weather'][0]['icon']
     }
 
-    return render(request, 'index.html', context)
-    
+    return HttpResponse(template.render(weather, request))
