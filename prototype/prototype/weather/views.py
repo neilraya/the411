@@ -20,5 +20,12 @@ def weather(request):
 
     response = requests.request("GET", url, headers=headers, params=querystring)
 
+    weather = {
+        'city' : city,
+        'temperature' : city_weather['main']['temp'],
+        'description' : city_weather['weather'][0]['description'],
+        'icon' : city_weather['weather'][0]['icon']
+    }
+
     return render(request, 'index.html', context)
     
