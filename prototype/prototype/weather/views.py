@@ -7,7 +7,9 @@ def weather(request):
 
     url = "http://samples.openweathermap.org/data/2.5/weather"
 
-    querystring = {"q":"London,uk","appid":"b6907d289e10d714a6e88b30761fae22"}
+    querystring = {"q": "London,uk","appid":"b6907d289e10d714a6e88b30761fae22", "units": "imperial"}
+
+    #querystring['q'] = request.POST
 
     headers = {
         'User-Agent': "PostmanRuntime/7.18.0",
