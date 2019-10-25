@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from weather.forms import searchForm
 import requests
 
 def weather(request):
@@ -9,7 +10,7 @@ def weather(request):
 
     form = searchForm()
 
-    querystring = {"q": "London,uk","appid":"b6907d289e10d714a6e88b30761fae22", "units": "imperial"}
+    querystring = {"q": "Paris","appid":"b6907d289e10d714a6e88b30761fae22"}#, "searchform":form}
 
     #querystring['q'] = request.POST
 
@@ -22,12 +23,13 @@ def weather(request):
         'Referer': "http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22",
         'Connection': "keep-alive",
         'cache-control': "no-cache"
-        }
+    }
 
-    response = requests.request("GET", url, headers=headers, params=querystring).json()
+    response = requests.get(url, headers=headers, params=querystring).json()
 
     template = loader.get_template('weather/index.html')
 
+    #print(response)
 
     weather = {
         'city' : response['name'],
@@ -36,4 +38,5 @@ def weather(request):
         'icon' : response['weather'][0]['icon']
     }
 
-    return HttpResponse(template.render(weather, request))
+    #return HttpResponse(template.render(weather, request))
+    return render(request, "weather/index.html", {"searchform":form, "weather":weather})
