@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <form method="post" action="127.0.0.1:8000/weather/views.py">
+        <input name="query"/>
+    </form>
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-offset-4 is-4">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="field has-addons">
+                            <div class="control is-expanded">
+                                {{ form.name }}
+                            </div>
+                            <div class="control">
+                                <button class="button is-info">
+                                    Check weather
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <p>
+        The city is {{city}} <br>
+        The temperature is {{temperature}}
+    </p>
+</html>
