@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.shorcuts import render
 from weather.forms import searchForm
 import requests
 
@@ -8,7 +9,10 @@ def weather(request):
 
     url = "http://samples.openweathermap.org/data/2.5/weather"
 
-    form = searchForm()
+    template_name = 'weather/index.html'
+    def get(self,request):
+        form = searchForm()
+        return render(request, self.template_name, {'form': form})
 
     querystring = {"q": "Paris","appid":"b6907d289e10d714a6e88b30761fae22"}#, "searchform":form}
 
