@@ -1,0 +1,10 @@
+The "happy path" is as follows:
+
+1.A user navigates to our website, where they are prompted to sign in using twitter 
+2.The user signs in using twitter login, and upon correctly entering their username and password, are successfully redirected back to the "welcome back" page of our website
+3.The user is now logged in and can access the features specific to their account on our web app
+
+Some things that could go wrong:
+1.The user incorrectly enters their login information
+
+2.The user does not have an active Twitter account
