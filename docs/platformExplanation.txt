@@ -8,4 +8,9 @@ Django also includes security measures that we as beginners might not have known
 certainly a non-negligible learning curve that comes with Django, we were curious to learn this popular (and widely used) 
 framework and interested to put the time in to do so.
 
-We did not decide to use PHP because
+We decided not to use Node.js. Although, Node.js offers high performance, wide selection of great libraries, and a huge user 
+community. Particularly, Node.js asynchronous programming was one of several reasons on why we chose not to use Node.js. In 
+Node.js your are constantly being exposed to the asynchronous nature of IO. Compared to Django[python-based], which is 
+programmed synchronously. Another reason for not choosing Node.js was due to Node.js working with single threads, it performs 
+poorly in CPU intensive conditions. Whereas, Django is highly scalable. The caching of applications is quite easy and can be 
+done using tools like MemCache. Overall, this led to our decision to use Django over Node.js.
