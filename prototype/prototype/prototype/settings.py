@@ -19,9 +19,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '9jyl+$li3&-jm(*lx)xsp%c#t_q09-za2$jg54gozsnr74c7iq'
-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -73,8 +70,14 @@ SOCIALACCOUNT_PROVIDERS = \
         'VERIFIED_EMAIL': False,
         'VERSION': 'v2.4'}}
         
-################################################################
-        
+#facebook
+APP_ID: '1024943627855444'
+SECRET_KEY: 'd15e78083675dfaebb2da8e1ae650140'
+SITE_ID: '127.0.0.1:8000'
+ACCOUNT_EMAIL_REQUIRED=True
+ACCOUNT_USERNAME_REQUIRED=True
+
+LOGIN_REDIRECT_URL = '/' 
       
 
 MIDDLEWARE = [
