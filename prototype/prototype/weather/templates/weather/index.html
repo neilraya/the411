@@ -1,5 +1,21 @@
 <!DOCTYPE html>
+
+{% load socialaccount %}
+{% providers_media_js %}
 <html>
+	<head>
+		<title>Facebook Registration</title>
+	<head>
+	
+	<body>
+
+	<a href="{% provider_login_url "facebook" method="js_sdk" %}">Login Button image</a>
+	<a href="{% provider_login_url "facebook" method="js_sdk" %}" class="btn btn-block btn-social btn-facebook" style="background-color:#3b5998;text-align:center">
+	<span class="fa fa-facebook"></span>
+               Sign in with Facebook
+	</a>
+	
+	
     <form method="post" action="/city/">
         {% csrf_token %}
         {{form.as_p}}

@@ -42,4 +42,4 @@ def weather(request):
     }
 
     #return HttpResponse(template.render(weather, request))
-    return render(request, "weather/index.html", {"searchform":form, "weather":weather})
+    return render(request, "weather/index.html", {"searchform":template, "weather":weather})

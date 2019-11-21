@@ -22,7 +22,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'weather'
 ]
 
 
@@ -73,7 +74,7 @@ SOCIALACCOUNT_PROVIDERS = \
 #facebook
 APP_ID = '1024943627855444'
 SECRET_KEY = ''
-SITE_ID = '127.0.0.1:8000'
+SITE_ID: '127.0.0.1:8000'
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQUIRED=True
 
