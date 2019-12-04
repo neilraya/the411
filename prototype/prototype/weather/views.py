@@ -30,7 +30,7 @@ def weather(request):
 
     response = requests.get(url, headers=headers, params=querystring).json()
 
-    template = loader.get_template('weather/index.html')
+    template = loader.get_template('weather/login.html')
 
     #print(response)
 
@@ -42,4 +42,4 @@ def weather(request):
     }
 
     #return HttpResponse(template.render(weather, request))
-    return render(request, "weather/index.html", {"searchform":template, "weather":weather})
+    return render(request, "weather/login.html", {"searchform":template, "weather":weather})
