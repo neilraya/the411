@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from weather.forms import searchForm
 import requests
-import yelpapi as yelp
+import yelpapi
 
 passwords = {}
 with open("prototype/passwords.txt") as f:
@@ -11,22 +11,24 @@ with open("prototype/passwords.txt") as f:
         (key, val) = line.split()
         passwords[key] = val
 
+def login(request):
+    return render(request, "weather/login.html")
+
 def main(request):
     return render(request, "weather/main.html")
     
 def yelp(request):
-    response = yelp.business_match_query(city=city,
-                                         price=price)
-                                         
-    return render(request, "weather/yelpSearch.html")
+    yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
+    response = yelp.search_query(location=request.POST['cname'],
+                                 price="1")
+    temperature = weather(request)
+    return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature})
     
 def weather(request):
 
-    import requests
-
     url = "http://api.openweathermap.org/data/2.5/weather"
 
-    querystring = {"q":"Paris","APPID":passwords['WEATHER_API_KEY']}
+    querystring = {"q":request.POST['cname'],"APPID":passwords['WEATHER_API_KEY']}
 
     headers = {
         'User-Agent': "PostmanRuntime/7.20.1",
@@ -41,16 +43,17 @@ def weather(request):
 
     response = requests.get(url, headers=headers, params=querystring).json()
 
-    template = loader.get_template('weather/login.html')
+    #template = loader.get_template('weather/login.html')
 
     #print(response)
 
-    weather = {
-        'city' : response['name'],
-        'temperature' : response['main']['temp'],
-        'description' : response['weather'][0]['description'],
-        'icon' : response['weather'][0]['icon']
-    }
+    #weatherres = {
+    #    'city' : response['name'],
+    #    'temperature' : response['main']['temp'],
+    #    'description' : response['weather'][0]['description'],
+    #    'icon' : response['weather'][0]['icon']
+    #}
 
     #return HttpResponse(template.render(weather, request))
-    return render(request, "weather/main.html", {"searchform":template, "weather":weather})
+    #return render(request, "weather/main.html", {"weather":weather})#, "searchform":template, })
+    return response['main']['temp']
