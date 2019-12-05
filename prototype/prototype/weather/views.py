@@ -23,6 +23,7 @@ def yelp(request):
                                  price="1",
                                  limit=10)
     temperature = weather(request)
+    print(response)
     return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature})
     
 def weather(request):

@@ -155,7 +155,15 @@
         
 		</form>
 		<p>
-			Search Results: 
+			Search Results: <br><br>
+				
+				{% for b in response.businesses %}
+					Name: {{b.name}} <br>
+					City: {{b.location.city}}
+					
+					<br><br>
+				
+				{% endfor %}
 			
 		</p>
 		
