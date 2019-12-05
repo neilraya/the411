@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template import loader
 from weather.forms import searchForm
 import requests
+import yelpapi as yelp
 
 passwords = {}
 with open("prototype/passwords.txt") as f:
@@ -14,6 +15,9 @@ def main(request):
     return render(request, "weather/main.html")
     
 def yelp(request):
+    response = yelp.business_match_query(city=city,
+                                         price=price)
+                                         
     return render(request, "weather/yelpSearch.html")
     
 def weather(request):
