@@ -8,6 +8,9 @@ import requests
 def main(request):
     return render(request, "weather/main.html")
     
+def yelp(request):
+    return render(request, "weather/yelpSearch.html")
+    
 def weather(request):
 
     url = "http://samples.openweathermap.org/data/2.5/weather"
