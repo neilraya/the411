@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from passwords import FACEBOOK_SECRET_KEY
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -73,7 +74,7 @@ SOCIALACCOUNT_PROVIDERS = \
         
 #facebook
 APP_ID = '1024943627855444'
-SECRET_KEY = 'd15e78083675dfaebb2da8e1ae650140'
+SECRET_KEY = FACEBOOK_SECRET_KEY
 SITE_ID: '127.0.0.1:8000'
 ACCOUNT_EMAIL_REQUIRED=True
 ACCOUNT_USERNAME_REQUIRED=True
