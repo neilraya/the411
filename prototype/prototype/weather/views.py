@@ -4,6 +4,11 @@ from django.template import loader
 from weather.forms import searchForm
 import requests
 
+passwords = {}
+with open("prototype/passwords.txt") as f:
+    for line in f:
+        (key, val) = line.split()
+        passwords[key] = val
 
 def main(request):
     return render(request, "weather/main.html")
@@ -13,29 +18,22 @@ def yelp(request):
     
 def weather(request):
 
-    url = "http://samples.openweathermap.org/data/2.5/weather"
+    import requests
 
-    template_name = 'weather/index.html'
-    def get(self,request):
-        form = searchForm()
-        return render(request, self.template_name, {'form': form})
+    url = "http://api.openweathermap.org/data/2.5/weather"
 
-    querystring = {"q": "London,uk","appid":"b6907d289e10d714a6e88b30761fae22"}#, "searchform":form}
-
-    #querystring['q'] = request.POST
-    
- 
+    querystring = {"q":"Paris","APPID":passwords['WEATHER_API_KEY']}
 
     headers = {
-        'User-Agent': "PostmanRuntime/7.18.0",
+        'User-Agent': "PostmanRuntime/7.20.1",
         'Accept': "*/*",
         'Cache-Control': "no-cache",
-        'Postman-Token': "8be8b4eb-151e-4ef2-bbfb-50e6b65b6825,5909aa04-7312-4570-b457-b9d58d83d25b",
+        'Postman-Token': "6e50db66-a2e8-4b9f-b8ef-fd00cbf8d955,ebe1363c-f7d7-4316-a683-ea6064efbf56",
+        'Host': "api.openweathermap.org",
         'Accept-Encoding': "gzip, deflate",
-        'Referer': "http://samples.openweathermap.org/data/2.5/weather?q=London,uk&appid=b6907d289e10d714a6e88b30761fae22",
         'Connection': "keep-alive",
         'cache-control': "no-cache"
-    }
+        }
 
     response = requests.get(url, headers=headers, params=querystring).json()
 
@@ -51,4 +49,4 @@ def weather(request):
     }
 
     #return HttpResponse(template.render(weather, request))
-    return render(request, "weather/login.html", {"searchform":template, "weather":weather})
+    return render(request, "weather/main.html", {"searchform":template, "weather":weather})
