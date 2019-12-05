@@ -4,6 +4,10 @@ from django.template import loader
 from weather.forms import searchForm
 import requests
 
+
+def main(request):
+    return render(request, "weather/main.html")
+    
 def weather(request):
 
     url = "http://samples.openweathermap.org/data/2.5/weather"
@@ -16,6 +20,8 @@ def weather(request):
     querystring = {"q": "London,uk","appid":"b6907d289e10d714a6e88b30761fae22"}#, "searchform":form}
 
     #querystring['q'] = request.POST
+    
+ 
 
     headers = {
         'User-Agent': "PostmanRuntime/7.18.0",
@@ -30,7 +36,7 @@ def weather(request):
 
     response = requests.get(url, headers=headers, params=querystring).json()
 
-    template = loader.get_template('weather/index.html')
+    template = loader.get_template('weather/login.html')
 
     #print(response)
 
@@ -42,4 +48,4 @@ def weather(request):
     }
 
     #return HttpResponse(template.render(weather, request))
-    return render(request, "weather/index.html", {"searchform":weather, "weather":weather})
+    return render(request, "weather/login.html", {"searchform":template, "weather":weather})
