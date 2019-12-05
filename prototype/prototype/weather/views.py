@@ -22,7 +22,6 @@ def yelp(request):
     response = yelp.search_query(location=request.POST['cname'],
                                  price="1")
     temperature = weather(request)
-    print(response)
     return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature})
     
 def weather(request):
