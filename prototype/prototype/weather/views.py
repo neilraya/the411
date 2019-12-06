@@ -20,7 +20,7 @@ def main(request):
 def yelp(request):
     yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
     response = yelp.search_query(location=request.POST['cname'],
-                                 price="1",
+                                 price=request.POST['value'],
                                  limit=10)
     temperature = weather(request)
     return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature})

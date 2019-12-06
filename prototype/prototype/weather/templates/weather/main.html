@@ -144,10 +144,10 @@
 		<form method="post" action="/yelpSearch/">
 		
 			City Name: <input type="text" name="cname">
-			Price Range: <input type="radio" name="value" value="one">$
-			<input type="radio" name="value" value="two">$$
-			<input type="radio" name="value" value="three">$$$
-			<input type="radio" name="value" value="four">$$$$
+			Price Range: <input type="radio" name="value" value=1>$
+			<input type="radio" name="value" value=2>$$
+			<input type="radio" name="value" value=3>$$$
+			<input type="radio" name="value" value=4>$$$$
 			
 			{% csrf_token %}
 			{{form.as_p}}
