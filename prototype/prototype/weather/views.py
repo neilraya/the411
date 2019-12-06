@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from weather.forms import searchForm
+from .models import SearchHistory
 import requests
 import yelpapi
 
@@ -18,6 +19,9 @@ def main(request):
     return render(request, "weather/main.html")
     
 def yelp(request):
+    search_history = SearchHistory()
+    search_history.CityName = request.POST['cname']
+    search_history.save()
     yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
     response = yelp.search_query(location=request.POST['cname'],
                                  price=request.POST['value'],
