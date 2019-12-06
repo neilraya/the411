@@ -18,12 +18,25 @@ def main(request):
     return render(request, "weather/main.html")
     
 def yelp(request):
+
+    temperature =  round(((9*(weather(request) - 273))/5) +32)
+    
+    icon = ""
+    color=""
+    if(temperature > 50):
+        icon = "fa fa-sun-o fa-3x"
+        color = "#FF0000;"
+    else:
+        icon = "fa fa-snowflake-o fa-3x"
+        color = "#0000FF;"
+    
+    
     yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
     response = yelp.search_query(location=request.POST['cname'],
                                  price=request.POST['value'],
                                  limit=10)
-    temperature = weather(request)
-    return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature})
+    
+    return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature, "icon":icon, "color":color})
     
 def weather(request):
 
