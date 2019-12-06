@@ -19,11 +19,9 @@ def main(request):
     return render(request, "weather/main.html")
     
 def yelp(request):
-<<<<<<< HEAD
     search_history = SearchHistory()
     search_history.CityName = request.POST['cname']
     search_history.save()
-=======
 
     temperature =  round(((9*(weather(request) - 273))/5) +32)
     
@@ -37,7 +35,6 @@ def yelp(request):
         color = "#0000FF;"
     
     
->>>>>>> f7a85473c468a15f74b75bca3f9b40c9e165cf7e
     yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
     response = yelp.search_query(location=request.POST['cname'],
                                  price=request.POST['value'],
