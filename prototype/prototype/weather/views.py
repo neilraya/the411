@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from weather.forms import searchForm
+from .models import SearchHistory
 import requests
 import yelpapi
 
@@ -24,8 +25,15 @@ def main(request):
     
 #Accesses the yelp API after the user searches
 def yelp(request):
+<<<<<<< HEAD
     
     #Changing temp from kelvin to Farenheit
+=======
+    search_history = SearchHistory()
+    search_history.CityName = request.POST['cname']
+    search_history.save()
+
+>>>>>>> 7f52545604f3599a0821508eefcafdda99d80e0d
     temperature =  round(((9*(weather(request) - 273))/5) +32)
     
     #Icon is the sun to represent warm weather and snowflake for cold
