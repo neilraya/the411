@@ -5,39 +5,58 @@ from weather.forms import searchForm
 import requests
 import yelpapi
 
+#Gives access to our local passwords for the API's and facebook login
 passwords = {}
 with open("prototype/passwords.txt") as f:
     for line in f:
         (key, val) = line.split()
         passwords[key] = val
 
+#Loads up the login screen
 def login(request):
     return render(request, "weather/login.html")
-
+    
+ 
+#Loads up main page after login is successful
 def main(request):
     return render(request, "weather/main.html")
     
+    
+#Accesses the yelp API after the user searches
 def yelp(request):
-
+    
+    #Changing temp from kelvin to Farenheit
     temperature =  round(((9*(weather(request) - 273))/5) +32)
     
+    #Icon is the sun to represent warm weather and snowflake for cold
+    #color is red for sun and blue for cold
+    #out is a boolean that helps filter out utdoor events in cold weather
     icon = ""
     color=""
+    out = True
     if(temperature > 50):
         icon = "fa fa-sun-o fa-3x"
         color = "#FF0000;"
     else:
         icon = "fa fa-snowflake-o fa-3x"
         color = "#0000FF;"
+        out = False 
     
     
     yelp = yelpapi.YelpAPI(passwords['YELP_API_KEY'])
+    
+    #Yelp event filter
     response = yelp.search_query(location=request.POST['cname'],
                                  price=request.POST['value'],
+                                 outdoor = out,
                                  limit=10)
     
+    #Sends the JSON of filtered events to the yelpSearch html page
     return render(request, "weather/yelpSearch.html", {"response":response, "temperature":temperature, "icon":icon, "color":color})
     
+    
+#weather function that gets info from the weather api and sends it back to the yelp function
+#to help filter out events
 def weather(request):
 
     url = "http://api.openweathermap.org/data/2.5/weather"
@@ -70,4 +89,7 @@ def weather(request):
 
     #return HttpResponse(template.render(weather, request))
     #return render(request, "weather/main.html", {"weather":weather})#, "searchform":template, })
+    
+    
+    #temperature of the target city
     return response['main']['temp']
