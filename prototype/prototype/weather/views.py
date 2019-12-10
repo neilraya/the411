@@ -27,7 +27,7 @@ def main(request):
 def yelp(request):
 <<<<<<< HEAD
     
-    #Changing temp from kelvin to Farenheit
+    #Database saving search history
 =======
     search_history = SearchHistory()
     search_history.CityName = request.POST['cname']
