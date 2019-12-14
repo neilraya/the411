@@ -25,15 +25,12 @@ def main(request):
     
 #Accesses the yelp API after the user searches
 def yelp(request):
-<<<<<<< HEAD
     
     #Database saving search history
-=======
     search_history = SearchHistory()
     search_history.CityName = request.POST['cname']
     search_history.save()
 
->>>>>>> 7f52545604f3599a0821508eefcafdda99d80e0d
 
     #Changing kelvin to Farenheit
     temperature =  round(((9*(weather(request) - 273))/5) +32)
